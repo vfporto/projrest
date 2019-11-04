@@ -10,8 +10,8 @@ class PontoTuristico(models.Model):
     aprovado = models.BooleanField(default=False)
     atracoes = models.ManyToManyField(Atracao)
     localizacao = models.OneToOneField(Localizacao, on_delete=models.SET_NULL, null=True)
-    comentarios = models.ManyToManyField(Comentario)
-    reviews = models.ManyToManyField(Review)
+    comentarios = models.ManyToManyField(Comentario, blank=True)
+    reviews = models.ManyToManyField(Review, blank=True)
 
     def __str__(self):
         return self.nome
