@@ -21,9 +21,11 @@ from atracoes.api.viewsets import AtracaoViewSet
 from localizacoes.api.viewsets import LocalizacaoViewSet
 from comentarios.api.viewsets import ComentarioViewSet
 from reviews.api.viewsets import ReviewViewSet
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 router = routers.DefaultRouter()
-router.register(r'ponto_turistico', PontoTuristicoViewSet)
+router.register(r'ponto_turistico', PontoTuristicoViewSet, base_name='PontoTuristico')
 router.register(r'localizacoes', LocalizacaoViewSet)
 router.register(r'atracoes', AtracaoViewSet)
 router.register(r'comentarios', ComentarioViewSet)
@@ -35,4 +37,5 @@ router.register(r'reviews', ReviewViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+    # path('api-auth-token', obtain_auth_token),
 ]
